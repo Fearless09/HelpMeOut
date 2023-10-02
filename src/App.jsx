@@ -5,6 +5,7 @@ import LoginPage from './pages/LoginPage'
 import HomePage from './pages/HomePage'
 import VideoPage from './pages/VideoPage'
 import InstallPage from './pages/InstallPage'
+import FilePage from './pages/FilePage'
 
 function App() {
 
@@ -15,6 +16,7 @@ function App() {
       <Route path='/home' element={<HomePage />} />
       <Route path='/video' element={<VideoPage />} />
       <Route path='/install' element={<InstallPage />} />
+      <Route path='/file' element={<FilePage />} />
     </Routes>
   )
 }

@@ -23,7 +23,7 @@ function InstallPage() {
                     <header className="flex justify-between items-start pb-12 border-b">
                         <div className='flex items-start gap-6'>
                             <Link to={'/'}>
-                            <img src={helpLogo} className='w-20 h-20' alt="" />
+                                <img src={helpLogo} className='w-20 h-20' alt="" />
                             </Link>
                             {/* Home */}
                             <div>
@@ -57,7 +57,9 @@ function InstallPage() {
                                 </div>
                             </div>
                         </div>
-                        <button className="py-3 px-4 rounded text-white bg-[#0E75C5] font-work-sans font-medium text-lg">Add to Chrome</button>
+                        <div className="py-3 px-4 rounded text-white bg-[#0E75C5] font-work-sans font-medium text-lg">
+                            <a href='https://drive.google.com/drive/folders/1Hl4JshiBB1q74p4MzNe9TQKVsUIg85X8?usp=drive_link' target='_blank'>Add to Chrome</a>
+                        </div>
                     </header>
                     <div className='my-10 flex justify-center items-center gap-10 font-work-sans text-xl font-medium'>
                         <button className='shadow-lg py-3 px-4 rounded-3xl text-[#0E75C5]'>Overview</button>
@@ -66,10 +68,10 @@ function InstallPage() {
                         <button className='text-[#606060]'>Related</button>
                     </div>
                 </section>
-               
+
             </div>
             <section className='pt-11 bg-[#F0F0F0]'>
-                <div className='container mx-auto flex items-center gap-8'>
+                <div className='container mx-auto flex justify-center items-center gap-8'>
                     <button><img src={Arrow1} alt="" /></button>
                     <span>
                         <img src={Frame} alt="" />
