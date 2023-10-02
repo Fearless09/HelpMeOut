@@ -1,0 +1,20 @@
+{
+    "manifest_version": 3,
+    "version": "1.0",
+    "name": "Screen Recorder",
+    "action": {
+        "default_popup": "index.html"
+    },
+    "permissions": [
+        "activeTab",
+        "scripting",
+        "tabs"
+    ],
+    "host_permissions": [
+        "http://*/*",
+        "https://*/*"
+    ],
+    "icons": {
+        "32": "Vector.png"
+    }
+}
