@@ -10,20 +10,28 @@ import telegramIcon from '../assets/telegram.svg'
 import videoIcon from '../assets/video.png'
 import arrowDown from '../assets/arrowDown.svg'
 import Footer from '../components/Footer'
+import ShareModal from '../components/ShareModal'
 
 function FilePage() {
     const [editable, setEditable] = useState(false)
+    const [showModal, setShowModal] = useState(false)
     const [emailText, setEmailTest] = useState('')
 
-    // useEffect(() => {
-    //     window.scrollTo({
-    //         top: 0,
-    //         behavior: 'smooth',
-    //     });
-    // }, [])
+    useEffect(() => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth',
+        });
+    }, [])
+
+    function onClose() {
+        setShowModal(false)
+    }
 
     return (
-        <>
+        <div className='relative overflow-hidden'>
+            {/* Modal */}
+            {showModal && <ShareModal emailText={emailText} onClose={onClose} />}
             {/* NavBar */}
             <nav className='bg-white px-3 py-6 my-[10px]'>
                 <div className="container mx-auto flex items-center justify-between gap-4">
@@ -57,7 +65,7 @@ function FilePage() {
                             <button onClick={() => setEditable(!editable)} ><img src={editSvg} alt="" /></button>
                         </div>
                         {/* Send To Email Address */}
-                        <form className="mt-16 py-3 px-6 flex items-center bg-[#B6B3C633] rounded-2xl lg:max-w-[550px] w-full gap-1">
+                        <form className="mt-16 py-3 px-6 flex items-center bg-[#B6B3C633] rounded-2xl lg:max-w-[550px] w-full gap-1" onSubmit={() => setShowModal(true)}>
                             <input type="email" placeholder="enter email of receiver" value={emailText} onChange={(event) => setEmailTest(event.target.value)} className="py-[6px] text-lg font-work-sans font-normal text-[#434343CC] bg-transparent flex-auto focus-visible:outline-[#605C84]" required />
                             <button type="submit" className="py-[10px] px-[18px] bg-[#605C84] text-white text-base font-['Manrope'] font-medium rounded-lg active:scale-[0.98] active:bg-[#373166]">Send</button>
                         </form>
@@ -146,7 +154,7 @@ function FilePage() {
 
             <br /><br />
             <Footer />
-        </>
+        </div>
     )
 }
 

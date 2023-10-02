@@ -11,10 +11,13 @@ import telegramIcon from '../assets/telegram.svg'
 import { useEffect, useState } from "react"
 import { HiOutlineLogout } from 'react-icons/hi'
 import Footer from "../components/Footer"
+import ShareModal from "../components/ShareModal"
 
 function VideoPage() {
     const [editable, setEditable] = useState(false)
     const [isLogout, setIsLogout] = useState(false)
+    const [showModal, setShowModal] = useState(false)
+    const [emailText, setEmailTest] = useState('')
 
     useEffect(() => {
         window.scrollTo({
@@ -29,10 +32,17 @@ function VideoPage() {
         }, 4000);
     }, [isLogout])
 
+    function onClose() {
+        setShowModal(false)
+    }
+
 
     const navigate = useNavigate()
     return (
-        <div className='px-0 m-0 bg-white'>
+        <div className='px-0 m-0 bg-white relative overflow-hidden'>
+            {/* Modal */}
+            {showModal && <ShareModal emailText={emailText} onClose={onClose} />}
+
             <div className="container mx-auto mt-10 px-3">
                 <nav className='flex justify-between items-center py-2'>
                     <Link to={'/home'} className='flex items-center py-2 gap-2'>
@@ -72,8 +82,8 @@ function VideoPage() {
                 </div>
 
                 <div className="mt-10 flex flex-col lg:flex-row items-center justify-between gap-5">
-                    <form className="py-[14px] px-6 flex items-center bg-[#B6B3C680] rounded-xl lg:max-w-[550px] w-full gap-1">
-                        <input type="email" placeholder="enter email of receiver" className="py-[6px] text-lg font-work-sans font-normal text-[#141414] bg-transparent flex-auto focus-visible:outline-[#605C84]" required />
+                    <form className="py-[14px] px-6 flex items-center bg-[#B6B3C680] rounded-xl lg:max-w-[550px] w-full gap-1" onSubmit={() => setShowModal(true)}>
+                        <input type="email" placeholder="enter email of receiver" value={emailText} onChange={e => setEmailTest(e.target.value)} className="py-[6px] text-lg font-work-sans font-normal text-[#141414] bg-transparent flex-auto focus-visible:outline-[#605C84]" required />
                         <button type="submit" className="py-[10px] px-[18px] bg-[#605C84] text-white text-base font-['Manrope'] font-medium rounded-lg active:scale-[0.98] active:bg-[#373166]">Send</button>
                     </form>
                     <div className="flex justify-between items-center rounded-xl bg-[#FAFAFA] py-[14px] px-3 lg:max-w-[600px] w-full flex-wrap">
